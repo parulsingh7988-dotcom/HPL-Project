@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Real-Time Supply Chain Tracking — Improved</title>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- App styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>🚚 Real-Time Supply Chain Tracking</h1>
+      <small class="subtitle">Live vehicle positions, alerts & ETA</small>
+    </div>
+
+    <div class="status">
+      <div id="connection" class="chip offline">Offline</div>
+      <div id="last-updated" class="muted">—</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="map-wrap">
+      <div id="map"></div>
+      <div id="legend" class="legend">
+        <div><span class="legend-marker"></span> Vehicle</div>
+        <div><span class="legend-path"></span> Path</div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="panel-section">
+        <h2>Vehicles</h2>
+        <ul id="vehicle-list" class="vehicle-list">
+          <!-- Generated -->
+        </ul>
+      </div>
+
+      <div class="panel-section">
+        <h2>Alerts</h2>
+        <div id="alerts-box" class="alerts-box">
+          <ul id="alerts" class="alerts"></ul>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h2>Controls</h2>
+        <div class="controls">
+          <button id="toggle-sim">Use simulation (if backend down)</button>
+          <button id="center-map">Center map</button>
+          <small class="muted">Polling interval: 2s</small>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer muted">
+    Tip: Make sure your backend at <code>http://127.0.0.1:5001/status</code> returns JSON like:
+    <code>{"V1": {"lat": 28.6, "lon": 77.2, "speed": 40, "eta": 10, "distance": 1.2}}</code>
+  </footer>
+
+  <!-- Leaflet + App script -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
